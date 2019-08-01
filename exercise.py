@@ -5,18 +5,25 @@ classroom_seating = [
   ["Smokey","Toast","Pacha","Mau"]
 ]
 
-#Question 1:
 def find_free_seats(classroom):
+    new_classroom = classroom
     for row_index, row in enumerate(classroom):
         for col_index, column in enumerate(row):
-            # print(f'Row {row_index} - seat {col_index}.')
-            # print(column)
+
             if not column:
-                # print(column)
-                print(f'Row {row_index+1} seat {col_index+1} is free.')
+                # print(f'Row {row_index+1} seat {col_index+1} is free.') #Question 1.
+                print(f'Row {row_index+1} seat {col_index+1} is free. Do you want to sit there? (y/n)') #Question 2.
+                sit_here = input()
+                # sit_here = 'y'
 
-        # Row 1 seat 1 is free.
+                if sit_here == 'y':
+                    print('What is your name?')
+                    your_name = input()
+                    # your_name = 'Bobby'
+                    new_classroom[row_index][col_index] = your_name
 
+    return new_classroom
 
-
-find_free_seats(classroom_seating)
+print(f'Original seating: {classroom_seating}\n')
+new_classroom_seating = find_free_seats(classroom_seating)
+print(f'\nNew seating: {new_classroom_seating}')
